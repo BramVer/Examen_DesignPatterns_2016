@@ -1,0 +1,27 @@
+//EXAMEN IT ARCHITECTUUR
+
+    Vraag 1:    Welke belangrijke tradeoffs zijn er gemaakt?
+
+    	Antwoord:	In de plaats van een 'business rule engine' te gebruiken, waarbij het design meer aanpasbaar zou zijn, gaan ze de 'regels' hardcoden, 
+    	omdat er toch niet zoveel zijn en ze niet regelmatig zullen veranderen. Ook wouden ze de verkoop kunnen volgen op het intranet van het bedrijf zelf.
+    	Op die manier wordt data opgevraagd van de operationele databank en kan die vertraging oplopen, waardoor ze afhankelijk zijn van de hoeveelheid activiteiten op hun webshop, om hun reports op te stellen.
+
+
+    Vraag 2:	Waar zit het grootste riciso in deze architectuur?
+
+    	Antwoord:	Doordat ze 2 aparte front-ends gebruiken, de online shop en de 'catalogue management', die beide afhankelijk zijn van de business layer om naar de database te communiceren,
+    	kan op deze laag weinig misgaan. Ook het accounting systeem, en het correct laten doorgaan van betalingen gebeurt op dit niveau. 
+    	Deze laag mag geen enkele fout bezitten en niet onder teveel stress staan, of niets in het systeem kan nog correct werken.
+
+
+    Vraag 3: 	Met welke crosscutting concerns zijn er rekening gehouden?
+
+    	Antwoord:	Door betalingsstatussen door te sturen als een batch file naar de order management componenten, én nieuwe orderuittreksels als individuele events door te sturen naar de accounting software, 
+    	gaan ze verwarring ('tangling') van de gegevens tegen. Op deze manier blijft alles mooi herkenbaar en individueel door het systeem gestuurd, zonder afhankelijk te zijn van één bepaalde dependency.
+
+
+    Vraag 4:	Hoe zou je logging in deze applicatie implementeren?
+
+    	Antwoord: 	Vooral event logging lijkt mij hier interessant. De databank biedt toch ingebouwde security & logging aan normaal gezien, 
+    	en via het extern accountingprogramma wordt het meeste qua financiële data toch al bijgehouden. Event logs gaan meer zeggen over wie, wanneer bezoekt (handig om zo hun report-planning op te stellen),
+    	en wat er gebeurt in het systeem. Als dit in de Data Access layer wordt geïmplementeerd, is de stap naar de databank kleiner en passeert elke query en result die in het systeem gebeuren toch.
