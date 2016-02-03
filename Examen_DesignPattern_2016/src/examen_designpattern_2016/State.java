@@ -9,4 +9,5 @@ package examen_designpattern_2016;
 public interface State {
     public void askQuestion();
     public int getCount();
+    public String getAnswer();
 }

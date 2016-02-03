@@ -7,21 +7,30 @@
 package examen_designpattern_2016;
 
 public class State_Most_likely implements State {
-    
+     
     private int count;
+    private String answer;
     MagicEightBall ball;
     
     public State_Most_likely(MagicEightBall mEBall) {
         this.ball = mEBall;
-        this.count = 2;
+        this.count = 5;
+        this.answer = "Most likely.";
     }
 
+    @Override
     public void askQuestion() {
-        System.out.println("Most likely.");
+        System.out.println(answer);
+        ball.pushAnswer(answer);
     }
     
+    @Override
     public int getCount() {
         return this.count;
     }
 
+    @Override
+    public String getAnswer() {
+        return this.answer;
+    }
 }

@@ -9,19 +9,28 @@ package examen_designpattern_2016;
 public class State_Yes implements State {
     
     private int count;
+    private String answer;
     MagicEightBall ball;
     
     public State_Yes(MagicEightBall mEBall) {
         this.ball = mEBall;
-        this.count = 4;
+        this.count = 5;
+        this.answer = "Yes.";
     }
 
+    @Override
     public void askQuestion() {
-        System.out.println("Yes.");
+        System.out.println(answer);
+        ball.pushAnswer(answer);
     }
     
+    @Override
     public int getCount() {
         return this.count;
     }
 
+    @Override
+    public String getAnswer() {
+        return this.answer;
+    }
 }

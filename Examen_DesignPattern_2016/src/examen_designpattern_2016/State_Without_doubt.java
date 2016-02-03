@@ -9,18 +9,28 @@ package examen_designpattern_2016;
 public class State_Without_doubt implements State {
     
     private int count;
+    private String answer;
     MagicEightBall ball;
     
     public State_Without_doubt(MagicEightBall mEBall) {
         this.ball = mEBall;
         this.count = 3;
+        this.answer = "Without a doubt.";
     }
 
+    @Override
     public void askQuestion() {
-        System.out.println("Without a doubt.");
+        System.out.println(answer);
+        ball.pushAnswer(answer);
     }
     
+    @Override
     public int getCount() {
         return this.count;
+    }
+
+    @Override
+    public String getAnswer() {
+        return this.answer;
     }
 }

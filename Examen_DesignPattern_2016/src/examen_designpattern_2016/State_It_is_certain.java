@@ -9,19 +9,28 @@ package examen_designpattern_2016;
 public class State_It_is_certain implements State {
     
     private int count;
+    private String answer;
     MagicEightBall ball;
     
     public State_It_is_certain(MagicEightBall mEBall) {
         this.ball = mEBall;
         this.count = 1;
+        answer = "It is certain.";
     }
 
+    @Override
     public void askQuestion() {
-        System.out.println("It is certain.");
+        System.out.println(answer);
+        ball.pushAnswer(answer);
     }
     
+    @Override
     public int getCount() {
         return this.count;
     }
 
+    @Override
+    public String getAnswer() {
+        return this.answer;
+    }
 }
