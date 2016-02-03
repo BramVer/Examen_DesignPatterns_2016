@@ -11,17 +11,18 @@ public class Examen_DesignPattern_2016 {
         MagicEightBall meb = new MagicEightBall();
         
         try {
-            System.out.println("U HEEFT DE MAGISCHE ACHTBAL WAKKER GEMAAKT!!! Wil u een spelletje spelen?");
+            System.out.println("De magische achtbal groet u!");
             do {
                 System.out.println("Hoe luidt uw 'ja/nee-vraag' aan de alwetende MagicEightBall?");
                 String vraag = new BufferedReader(new InputStreamReader(System.in)).readLine();
                 
+                //Loop designed for easier testing, not necessary irl:
                 //for(int i = 0; i < 10 ; i++)
                     meb.askQuestion(vraag);
                     
-                System.out.println("Nog een vraag voor de wijze der wijzen? y/n");
+                System.out.println("\nNog een vraag voor de wijze der wijzen? y/n");
             } while ("y".equals(new BufferedReader(new InputStreamReader(System.in)).readLine()));
-            
+            System.out.println("De magische achtbal wenst u nog veel succes in toekomstige ondernemingen.");
         } catch (IOException e) {
             e.printStackTrace();
         }
