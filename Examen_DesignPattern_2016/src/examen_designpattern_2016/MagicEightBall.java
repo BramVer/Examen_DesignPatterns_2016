@@ -20,7 +20,7 @@ public class MagicEightBall {
 //    State most_likely;
 //    State yes;
 //    
-    private State[] stateArr = new State[6];
+    private State[] stateArr = new State[11];
     private State state;
     
     private ArrayList<String> answers = new ArrayList<String>();
@@ -39,15 +39,20 @@ public class MagicEightBall {
 //        this.yes_definitely = new State_Yes_definitely(ball);
 //        this.most_likely = new State_Most_likely(ball);
 //        this.yes = new State_Yes(ball);
-        
+                
         stateArr[0] = new State_It_is_certain(this);
         stateArr[1] = new State_Is_decidedly_so(this);
         stateArr[2] = new State_Without_doubt(this);
         stateArr[3] = new State_Yes_definitely(this);
         stateArr[4] = new State_Most_likely(this);
         stateArr[5] = new State_Yes(this);
+        stateArr[6] = new State_Reply_hazy(this);
+        stateArr[7] = new State_Ask_later(this);
+        stateArr[8] = new State_Cannot_predict(this);
+        stateArr[9] = new State_Dont_count(this);
+        stateArr[10] = new State_Very_doubtful(this);
         
-        state = generateState("pipi");
+        state = stateArr[0];
     }
     
     public void askQuestion(String question) {
@@ -58,10 +63,10 @@ public class MagicEightBall {
     }
     
     private State generateState(String question) {
-        State temp = stateArr[(int)(Math.random() * 6)];
+        State temp = stateArr[(int)(Math.random() * stateArr.length)];
         if(questions.contains(question)) {
             while(answers.contains(temp.getAnswer())) {
-             temp = stateArr[(int)(Math.random() * 6)];
+             temp = stateArr[(int)(Math.random() * stateArr.length)];
              if(answers.size() >= stateArr.length) {
                  answers = new ArrayList<String>();
                  System.out.println("LIMIET BEREIKT");
